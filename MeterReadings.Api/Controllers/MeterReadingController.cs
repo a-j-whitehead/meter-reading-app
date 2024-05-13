@@ -47,7 +47,7 @@ namespace Api.Controllers
             }
             await _accountRepository.Save();
 
-            return Ok($"Meter readings successfully saved: {successfulReadings}; meter readings not successfully saved: {failedReadings}");
+            return Ok($"Meter readings successfully saved: {successfulReadings}; meter readings not saved: {failedReadings}");
         }
 
         private static List<MeterReadings.Api.Models.MeterReading> ReadMeterReadingsFromFile(IFormFile meter_readings)

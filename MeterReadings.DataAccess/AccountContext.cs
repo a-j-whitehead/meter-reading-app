@@ -5,6 +5,7 @@ namespace MeterReadings.DataAccess
 {
     public class AccountContext : DbContext
     {
+        private const string _localSqlServerName = "localhost\\SQLEXPRESS";
         public DbSet<Account> Accounts { get; set; }
 
         public AccountContext() { }
@@ -49,7 +50,7 @@ namespace MeterReadings.DataAccess
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=MeterReadings;Trusted_Connection=True;TrustServerCertificate=True;");
+            => optionsBuilder.UseSqlServer($"Server={_localSqlServerName};Database=MeterReadings;Trusted_Connection=True;TrustServerCertificate=True;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
